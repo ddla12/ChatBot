@@ -1,0 +1,13 @@
+{
+    "name": "chatbot",
+    "description": "An small library to create simple chatbots to your sites faster",
+    "version": "1.0.0",
+    "author": "Darud Lingilien",
+    "license": "MIT",
+    "main": "./module/index.js",
+    "keywords": [
+        "bot",
+        "chatbot",
+        "library"
+    ]
+}
