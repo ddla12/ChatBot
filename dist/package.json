@@ -1,13 +1,18 @@
 {
-    "name": "chatbot",
+    "name": "@darudlingilien/chatbot",
     "description": "An small library to create simple chatbots to your sites faster",
     "version": "1.0.0",
     "author": "Darud Lingilien",
     "license": "MIT",
     "main": "./module/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ddla12/ChatBot.git"
+    },
     "keywords": [
         "bot",
         "chatbot",
         "library"
-    ]
+    ],
+    "homepage": "https://github.com/ddla12/ChatBot"
 }
