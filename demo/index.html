@@ -12,18 +12,28 @@
         <script src="../dist/cdn/chatbot.min.js"></script>
     </head>
     <body>
-        <main>
-            <h1>ChatBot Demo</h1>
-            <div>
-                <div>
-
-                </div>
-                <form>
-                    <input type="text" />
-                    <button type="submit">Send</button>
-                </form>
+        <h1>ChatBot Demo</h1>
+        <div id="box">
+            <div id="messages">
+                <p style="display: none;">Bot is writing...</p>
             </div>
-        </main>
+            <form>
+                <input type="text" id="message" autocomplete="off" required/>
+                <button type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="5" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+        <div id="commands">
+            <h2>Available inputs</h2>
+            <ul>
+                <li>greet, greet me</li>
+                <li>author</li>
+                <li>version, chatbot info, info</li>
+            </ul>
+        </div>
         <script src="./index.js"></script>
     </body>
 </html>

@@ -1,13 +1,46 @@
-const $form = document.querySelector("form"),
-    $input  = document.querySelector("input[type='text']"),
-    $box    = document.querySelector("div");
+const $form     = document.querySelector("form"),
+    $input      = document.querySelector("input[type='text']"),
+    $messages   = document.querySelector("#messages"),
+    $submit     = document.querySelector("button");
 
-const Bot = new ChatBot();
+const drawReply = (from, message, state = undefined) => {
+    $messages.innerHTML += `
+        <span class="${(from == "user") ? 'user' : `bot ${state}`}">
+            <small>From: <strong>${from}</strong></small>
+            <em>${message}</em>
+        </span>
+    `;
 
-Bot.to("greet").replyWith("Hello there!");
+    $messages.scrollTop = $messages.scrollHeight;
+};
+
+const disabled = (value) => {
+    [$input.disabled, $submit.disabled ] = Array(2).fill(value);
+};
+
+const Bot = new ChatBot({
+    delay: 1500,
+    answerPrefix: "./"
+});
+
+Bot.to(["greet", "greet me"]).replyWith("Hello there!");
+Bot.to(["version", "chatbot info", "info"]).replyWith("Chatbot v1.0.0");
+Bot.to("author").chooseReply(["Darud Lingilien", "ddla12", "Some guy of Venezuela"]);
 
 $form.addEventListener("submit", async(e) => {
     e.preventDefault();
 
-    await Bot.readInput($input.value).then((response) => console.log(response.message));
+    disabled(true);
+
+    document.querySelector("p").style.display = "block";
+
+    drawReply('user', $input.value);
+
+    await Bot.readInput($input.value).then((response) => drawReply('bot', response.message, response.state));
+
+    disabled(false);
+
+    document.querySelector("p").style.display = "none";
+
+    $form.reset();
 });
